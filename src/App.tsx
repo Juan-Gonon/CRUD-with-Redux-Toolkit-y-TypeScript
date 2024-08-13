@@ -1,10 +1,11 @@
 import './App.css'
+import { ListOfUser } from './components/ListOfUser'
 
 function App() {
 
   return (
     <>
-    <h1>crud</h1>
+    <ListOfUser/>
     </>
   )
 }
