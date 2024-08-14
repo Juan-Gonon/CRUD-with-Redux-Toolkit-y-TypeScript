@@ -11,11 +11,11 @@ import {
     Title,
     Badge
   } from '@tremor/react'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '../hook/store'
 
   
   export function ListOfUser() {
-    const users = useSelector((state) => state.users)
+    const users = useAppSelector((state) => state.users)
 
     return (
       <Card>
