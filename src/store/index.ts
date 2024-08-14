@@ -2,19 +2,17 @@ import { configureStore } from "@reduxjs/toolkit"
 import { usersSlice } from "./users/slice"
 
 const persistenceLocalStorageMiddleware = (store) => (next) => (action) => {
-    console.log(store.getState())
-    console.log(action)
     next(action)
-    console.log(store.getState())
+    localStorage.setItem('__redux__state__', JSON.stringify(store.getState()))
 }
 
 export const store = configureStore({
     reducer: {
         users: usersSlice.reducer
     },
-   middleware(getDefaultMiddleware) {
-       return getDefaultMiddleware().concat(persistenceLocalStorageMiddleware)
-   },
+    middleware(getDefaultMiddleware) {
+        return getDefaultMiddleware().concat(persistenceLocalStorageMiddleware)
+    },
 })
 
 export type RootState = ReturnType<typeof store.getState>
