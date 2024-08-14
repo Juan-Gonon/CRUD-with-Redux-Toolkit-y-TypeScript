@@ -11,17 +11,11 @@ import {
     Title,
     Badge
   } from '@tremor/react'
-import { useAppDispatch, useAppSelector } from '../hook/store'
-import { deleteUserById, UserId } from '../store/users/slice'
+  import { useUserActions } from '../hook/useUserActions'
 
   
   export function ListOfUser() {
-    const users = useAppSelector((state) => state.users)
-    const dispatch = useAppDispatch()
-
-    const handleDeleteUser = (id: UserId) => {
-      dispatch(deleteUserById(id))
-    }
+    const { users, handleDeleteUser } = useUserActions()
 
     return (
       <Card>
